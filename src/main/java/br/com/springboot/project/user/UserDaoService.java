@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /*
  * O Spring adotou algumas anotações que representam camadas em uma aplicação. 
  * Este conceito de ter anotações com uma semântica melhor definida é chamado de Stereotypes.
- * São elas: @Component, @Controller, @Service, @Repository
+ * São elas: @Component, @Controller, @Service, @Repository,
  * 
  * */
 @Component
