@@ -12,13 +12,13 @@ public class HelloWorldBean {
     this.message = message;
   }
 
+  public String getMessage() {
+    return message;
+  }
+
   @Override
   public String toString() {
     return "HelloWorldBean [message=" + message + "]";
-  }
-
-   public String getMessage() {
-    return message;
   }
 
 }
