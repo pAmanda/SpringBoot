@@ -16,7 +16,7 @@ public class HelloWordController {
   public ResourceBundleMessageSource messageSource;
 
   @GetMapping(path="/hello-world")
-  public String helloWord(@RequestHeader(name="Accept-Language", required=false) Locale locale){
+  public String helloWord(@RequestHeader(name="Accept-Language", required=false) final Locale locale){
     return messageSource.getMessage("good.morning", null,  locale);
   }
 
@@ -26,7 +26,7 @@ public class HelloWordController {
   }
     
   @GetMapping(path="/hello-world-bean/{name}")
-  public HelloWorldBean helloWordBeanPathVariable(@PathVariable String name){
+  public HelloWorldBean helloWordBeanPathVariable(@PathVariable final String name){
     return new HelloWorldBean(String.format("Hello World, %s!", name));
   }
 
