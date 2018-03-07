@@ -22,7 +22,7 @@ pipeline {
                 timeout(time:5, unit:'DAYS'){
                     input message: 'Aprove PRODUCTION Deployment?'
                 }
-                build job: 'deploy-to-stage'
+                build job: 'deploy-to-prod'
             }
             post {
                 success {
