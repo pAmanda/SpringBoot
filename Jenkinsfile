@@ -17,13 +17,16 @@ pipeline {
         }
         stage('Deploy to staging'){
             when{
-                branch 'master'
+                branch '*/master'
             }
             steps {
                 build job: 'deploy-to-stage'
             }
         }
         stage('Deploy to Production'){
+            when{
+                branch '*/master'
+            }
             steps {
                 timeout(time:5, unit:'DAYS'){
                     input message: 'Aprove PRODUCTION Deployment?'
