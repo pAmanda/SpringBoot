@@ -2,6 +2,9 @@ pipeline {
     agent any
     stages{
         stage('Build'){
+            when{
+                branch 'feature/*'
+            }
             steps {
                 sh 'mvn clean package'
             }
@@ -13,6 +16,9 @@ pipeline {
             }
         }
         stage('Deploy to staging'){
+            when{
+                branch 'master'
+            }
             steps {
                 build job: 'deploy-to-stage'
             }
@@ -33,6 +39,5 @@ pipeline {
                 }
             }
         }
-
     }
 }
