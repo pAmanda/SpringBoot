@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Build'){
             when{
-                branch 'feature/*'
+                expression { env.BRANCH_NAME == 'feature/*' }
             }
             steps {
                 sh 'mvn clean package'
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Deploy to staging'){
             when{
-                branch '*/master'
+                expression { env.BRANCH_NAME == '*/master'}
             }
             steps {
                 build job: 'deploy-to-stage'
@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Deploy to Production'){
             when{
-                branch '*/master'
+                expression { env.BRANCH_NAME == '*/master'}
             }
             steps {
                 timeout(time:5, unit:'DAYS'){
