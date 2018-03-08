@@ -6,7 +6,7 @@ pipeline {
                 expression { GIT_BRANCH != '**/master/*' }
             }
             steps {
-                echo 'printenv' 
+                echo 'testing' 
                 build job: 'basic-build'
             }
         }
