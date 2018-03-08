@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 echo 'testindsddsg' 
-                build job: 'basic-build'
+                build job: 'multipleJob'
             }
         }
     }
