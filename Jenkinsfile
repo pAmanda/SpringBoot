@@ -1,45 +1,12 @@
 pipeline {
     agent any
-    stages{
-        stage('Build'){
+    stages {
+        stage('Build') {
             when{
-                expression { env.BRANCH_NAME == 'feature/*' }
+                expression { GIT_BRANCH != '**/master/*' }
             }
             steps {
-                sh 'mvn clean package'
-            }
-            post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
-            }
-        }
-        stage('Deploy to staging'){
-            when{
-                expression { env.BRANCH_NAME == '*/master'}
-            }
-            steps {
-                build job: 'deploy-to-stage'
-            }
-        }
-        stage('Deploy to Production'){
-            when{
-                expression { env.BRANCH_NAME == '*/master'}
-            }
-            steps {
-                timeout(time:5, unit:'DAYS'){
-                    input message: 'Aprove PRODUCTION Deployment?'
-                }
-                build job: 'deploy-to-prod'
-            }
-            post {
-                success {
-                    echo 'Code deployed to Production'
-                }
-                failure {
-                    echo 'Deployment failed.'
-                }
+                build job: 'basic-build'
             }
         }
     }
