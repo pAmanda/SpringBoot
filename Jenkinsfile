@@ -6,7 +6,7 @@ pipeline {
                 expression { GIT_BRANCH != '**/master/*' }
             }
             steps {
-                echo 'testing novamente' 
+                echo 'testing novamendsadte' 
                 build job: 'basic-build'
             }
         }
